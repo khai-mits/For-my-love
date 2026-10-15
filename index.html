@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Love! 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- Floating Hearts Background -->
+  <div class="hearts-container" id="heartsContainer"></div>
+
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <div class="card hero">
+      <h1>Happy Birthday!</h1>
+      <p>Wishing the sweetest girl an unforgettable day filled with love & smiles ✨</p>
+      <button class="music-btn" onclick="toggleMusic()">🎵 Play Sweet Tune</button>
+    </div>
+
+    <!-- Memory Gallery -->
+    <div class="card">
+      <div class="section-title">💖 Favorite Memories 💖</div>
+      <div class="gallery-grid">
+        <div class="memory-item">
+          <div class="memory-img">Our First Chat</div>
+          <div class="memory-caption">Sweet beginning</div>
+        </div>
+        <div class="memory-item">
+          <div class="memory-img">Late Night Talks</div>
+          <div class="memory-caption">Endless laughs</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Flip Cards -->
+    <div class="card">
+      <div class="section-title">✨ Why You're Special ✨</div>
+      <div class="notes-grid">
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">Tap to open 💌</div>
+            <div class="flip-card-back">Your gorgeous smile brightens my day</div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">Tap to open 💌</div>
+            <div class="flip-card-back">You understand me like no one else does</div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">Tap to open 💌</div>
+            <div class="flip-card-back">You're my favorite notification</div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">Tap to open 💌</div>
+            <div class="flip-card-back">Life is so much better with you in it</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Virtual Gift Box Unwrapping -->
+    <div class="card">
+      <div class="section-title">🎁 Special Birthday Letter 🎁</div>
+      <div class="gift-box-wrapper" onclick="openGift()">
+        <div class="gift-box" id="giftIcon">🎁</div>
+        <span style="font-size: 13px; font-weight: 500; color: #666;">Tap the gift box to unwrap!</span>
+      </div>
+      <div id="hiddenLetter" class="hidden-letter">
+        <p><strong>Dearest,</strong><br><br>
+        Happy Birthday! Thank you for being such an amazing, wonderful person. I hope this little page brings a smile to your face today. Wishing you all the happiness, love, and sweet treats you deserve this weekend! Enjoy your special day! 💕</p>
+      </div>
+    </div>
+
+    <!-- Side Quest Mini-Quiz -->
+    <div class="card quiz-box">
+      <div class="section-title" style="margin-bottom: 10px;">🌟 Side Quest Challenge 🌟</div>
+      <div class="quiz-question">What is our ultimate vibe?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="answerQuiz(true)">A) Endless talking & cozy late nights</button>
+        <button class="quiz-opt" onclick="answerQuiz(false)">B) Zero communication ever</button>
+      </div>
+      <div id="quizResult" class="quiz-result">🎉 Quest Cleared! You unlocked a lifetime supply of headpats & care! 🥰</div>
+    </div>
+
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
