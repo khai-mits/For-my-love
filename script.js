@@ -40,50 +40,25 @@ function answerQuiz(isCorrect) {
   }
 }
 
-// Web Audio API Synthesized Soft Tune
-let audioCtx = null;
+// Custom Audio Player for MP3
+const backgroundMusic = new Audio('song.mp3'); // Matches your uploaded file name
+backgroundMusic.loop = true; // Loops the song continuously
 let isPlaying = false;
-let timer = null;
 
 function toggleMusic() {
   const btn = document.querySelector('.music-btn');
   if (!isPlaying) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    isPlaying = true;
-    btn.innerHTML = '🔇 Stop Tune';
-    playMelody();
+    backgroundMusic.play().then(() => {
+      isPlaying = true;
+      btn.innerHTML = '🔇 Stop Tune';
+    }).catch(error => {
+      console.log("Audio play blocked or file missing:", error);
+      alert("Make sure 'song.mp3' is uploaded correctly in your repository!");
+    });
   } else {
-    if (timer) clearInterval(timer);
-    if (audioCtx) audioCtx.close();
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0; // Resets song to the beginning
     isPlaying = false;
     btn.innerHTML = '🎵 Play Sweet Tune';
   }
-}
-
-function playNote(frequency, duration) {
-  if (!audioCtx || !isPlaying) return;
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  
-  osc.type = 'sine';
-  osc.frequency.value = frequency;
-  
-  gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-  
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-  
-  osc.start();
-  osc.stop(audioCtx.currentTime + duration);
-}
-
-function playMelody() {
-  const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 392.00, 329.63, 293.66];
-  let index = 0;
-  timer = setInterval(() => {
-    if (!isPlaying) return;
-    playNote(notes[index], 0.6);
-    index = (index + 1) % notes.length;
-  }, 700);
 }
